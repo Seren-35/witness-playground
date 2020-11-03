@@ -259,6 +259,7 @@ window.loadHeader = function(titleText) {
       draw(window.currentPuzzle)
       return
     }
+    window.currentPuzzle = undefined
     var svg = document.getElementById('puzzle')
     while (svg.firstChild) svg.removeChild(svg.firstChild)
     var request = new XMLHttpRequest()
