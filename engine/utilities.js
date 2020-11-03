@@ -261,7 +261,7 @@ window.loadHeader = function(titleText) {
         draw(Puzzle.deserialize(this.responseText))
       }
     }
-    request.open("GET", "../puzzles/" + window.currentPanel + '.json', true)
+    request.open("GET", "puzzles/" + window.currentPanel + '.json', true)
     request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
     request.send()
   }
