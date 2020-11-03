@@ -281,7 +281,7 @@ window.loadHeader = function(titleText) {
     if (window.currentPanel !== 1) {
       window.knownPuzzles[currentPanel] = window.currentPuzzle
       window.currentPanel--
-			localStorage.setItem('currentPanel', JSON.stringify(window.currentPanel))
+      localStorage.setItem('currentPanel', JSON.stringify(window.currentPanel))
       window.updateArrows()
       updatePuzzle()
     }
@@ -295,7 +295,7 @@ window.loadHeader = function(titleText) {
     if (window.currentPanel !== window.unlockedPanel) {
       window.knownPuzzles[currentPanel] = window.currentPuzzle
       window.currentPanel++
-			localStorage.setItem('currentPanel', JSON.stringify(window.currentPanel))
+      localStorage.setItem('currentPanel', JSON.stringify(window.currentPanel))
       window.updateArrows()
       updatePuzzle()
     }
