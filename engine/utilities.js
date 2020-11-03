@@ -254,6 +254,7 @@ window.loadHeader = function(titleText) {
   navbar.style.background = 'rgba(0, 0, 0, 0)'
   
   var puzzleRoom = document.createElement('div')
+  document.body.appendChild(puzzleRoom)
   puzzleRoom.id = 'puzzleRoom'
   puzzleRoom.style = 'height: 100%; display: flex; justify-content: center; align-items: center'
   window.hidePuzzle = function() {
