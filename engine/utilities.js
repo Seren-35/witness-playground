@@ -345,7 +345,9 @@ window.loadHeader = function(titleText) {
 
   // Theme
   document.body.style.color = window.TEXT_COLOR
-  document.body.style.background = window.PAGE_BACKGROUND
+  document.body.style.backgroundImage = 'url("./images/background.jpg")'
+  document.body.style.backgroundSize = 'cover'
+  document.body.style.backgroundPosition = 'center'
 
   // Sensitivity
   var sensLabel = document.createElement('label')
