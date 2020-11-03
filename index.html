@@ -1,0 +1,38 @@
+<html xmlns="http://www.w3.org/2000/xhtml">
+  <head>
+    <meta property="og:title" content="Witness Playground" />
+    <meta property="og:description" content="Witness Playground" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Witness Playground" />
+    <link rel="stylesheet" type="text/css" href="./data/style.css" id="stylesheet">
+    <link rel="icon" type="image/png" href="./data/favicon.png">
+    <script type="text/javascript" src="./engine/utilities.js"></script>
+    <script type="text/javascript" src="./engine/polyominos.js"></script>
+    <script type="text/javascript" src="./engine/puzzle.js"></script>
+    <script type="text/javascript" src="./engine/validate.js"></script>
+    <script type="text/javascript" src="./engine/svg.js"></script>
+    <script type="text/javascript" src="./engine/display2.js"></script>
+    <script type="text/javascript" src="./engine/trace2.js"></script>
+    <script type="text/javascript" src="./engine/custom/bridges.js"></script>
+    <title>Witness Playground</title>
+  </head>
+  <body>
+    <script>
+      loadHeader('Witness Playground')
+    </script>
+    <div style="height: 100%; display: flex; justify-content: center; align-items: center">
+      <svg id="puzzle" style="pointer-events: auto"></svg>
+    </div>
+  </body>
+  <script>
+    window.onload = function() {
+      window.TRACE_COMPLETION_FUNC = function() {
+        if (window.currentPanel === window.unlockedPanel) {
+          window.unlockedPanel++
+          window.updateArrows()
+        }
+      }
+      window.updatePuzzle()
+    }
+  </script>
+</html>
