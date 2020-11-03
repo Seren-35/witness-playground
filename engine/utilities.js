@@ -253,8 +253,8 @@ window.loadHeader = function(titleText) {
   navbar.style.background = 'rgba(0, 0, 0, 0)'
   
   window.updatePuzzle = function() {
-		var svg = document.getElementById('puzzle')
-		while (svg.firstChild) svg.removeChild(svg.firstChild)
+    var svg = document.getElementById('puzzle')
+    while (svg.firstChild) svg.removeChild(svg.firstChild)
     var request = new XMLHttpRequest()
     request.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
@@ -274,8 +274,8 @@ window.loadHeader = function(titleText) {
     if (window.currentPanel !== 1) {
       window.currentPanel--
       window.updateArrows()
+      updatePuzzle()
     }
-    updatePuzzle()
   }
   
   var arrowRight = drawSymbol({'type':'arrowhead', 'width':1, 'height':1, 'color':window.TEXT_COLOR, 'degrees':0})
@@ -286,8 +286,8 @@ window.loadHeader = function(titleText) {
     if (window.currentPanel !== window.unlockedPanel) {
       window.currentPanel++
       window.updateArrows()
+      updatePuzzle()
     }
-    updatePuzzle()
   }
   
   window.updateArrows = function() {
