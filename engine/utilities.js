@@ -134,7 +134,9 @@ window.GAP_BREAK     = 1
 window.GAP_FULL      = 2
 
 window.currentPanel = localStorage.getItem('currentPanel')
+if (window.currentPanel === null) window.currentPanel = 1
 window.unlockedPanel = localStorage.getItem('unlockedPanel')
+if (window.unlockedPanel === null) window.unlockedPanel = 1
 window.knownPuzzles = []
 
 var animations = ''
