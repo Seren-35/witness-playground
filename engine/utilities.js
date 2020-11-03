@@ -254,17 +254,17 @@ window.loadHeader = function(titleText) {
   navbar.style.background = 'rgba(0, 0, 0, 0)'
   
   window.updatePuzzle = function() {
-		if (window.knownPuzzles[currentPanel] != undefined) {
-			window.currentPuzzle = window.knownPuzzles[currentPanel]
-			draw(window.currentPuzzle)
-			return
-		}
+    if (window.knownPuzzles[currentPanel] != undefined) {
+      window.currentPuzzle = window.knownPuzzles[currentPanel]
+      draw(window.currentPuzzle)
+      return
+    }
     var svg = document.getElementById('puzzle')
     while (svg.firstChild) svg.removeChild(svg.firstChild)
     var request = new XMLHttpRequest()
     request.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
-				window.currentPuzzle = Puzzle.deserialize(this.responseText)
+        window.currentPuzzle = Puzzle.deserialize(this.responseText)
         draw(window.currentPuzzle)
       }
     }
@@ -279,7 +279,7 @@ window.loadHeader = function(titleText) {
   arrowLeft.id = 'arrowLeft'
   arrowLeft.onclick = function() {
     if (window.currentPanel !== 1) {
-			window.knownPuzzles[currentPanel] = window.currentPuzzle
+      window.knownPuzzles[currentPanel] = window.currentPuzzle
       window.currentPanel--
       window.updateArrows()
       updatePuzzle()
@@ -292,7 +292,7 @@ window.loadHeader = function(titleText) {
   arrowRight.id = 'arrowRight'
   arrowRight.onclick = function() {
     if (window.currentPanel !== window.unlockedPanel) {
-			window.knownPuzzles[currentPanel] = window.currentPuzzle
+      window.knownPuzzles[currentPanel] = window.currentPuzzle
       window.currentPanel++
       window.updateArrows()
       updatePuzzle()
