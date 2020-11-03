@@ -273,7 +273,7 @@ window.loadHeader = function(titleText) {
     request.send()
   }
   
-  var arrowLeft = drawSymbol({'type':'arrowhead', 'width':1, 'height':1, 'color':window.TEXT_COLOR, 'degrees':180})
+  var arrowLeft = drawSymbol({'type':'arrowhead', 'width':1, 'height':1, 'color':window.BORDER, 'degrees':180})
   document.body.appendChild(arrowLeft)
   arrowLeft.style = 'width: 100px; height: 100px; position: absolute; left: 50px; top: 50%; transform: translateY(-50%)'
   arrowLeft.id = 'arrowLeft'
@@ -287,7 +287,7 @@ window.loadHeader = function(titleText) {
     }
   }
   
-  var arrowRight = drawSymbol({'type':'arrowhead', 'width':1, 'height':1, 'color':window.TEXT_COLOR, 'degrees':0})
+  var arrowRight = drawSymbol({'type':'arrowhead', 'width':1, 'height':1, 'color':window.BORDER, 'degrees':0})
   document.body.appendChild(arrowRight)
   arrowRight.style = 'width: 100px; height: 100px; position: absolute; right: 50px; top: 50%; transform: translateY(-50%)'
   arrowRight.id = 'arrowRight'
@@ -302,8 +302,8 @@ window.loadHeader = function(titleText) {
   }
   
   window.updateArrows = function() {
-    arrowLeft.style.opacity = window.currentPanel === 1 ? 0.1 : 1
-    arrowRight.style.opacity = window.currentPanel === window.unlockedPanel ? 0.1 : 1
+    arrowLeft.style.opacity = window.currentPanel === 1 ? 0.3 : 1
+    arrowRight.style.opacity = window.currentPanel === window.unlockedPanel ? 0.3 : 1
   }
   updateArrows()
 
