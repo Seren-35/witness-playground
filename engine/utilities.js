@@ -253,19 +253,29 @@ window.loadHeader = function(titleText) {
   navbar.style = 'position: fixed; left:0; top: 0; width: 100%; z-index: 1'
   navbar.style.background = 'rgba(0, 0, 0, 0)'
   
+  var puzzleRoom = document.createElement('div')
+  puzzleRoom.id = 'puzzleRoom'
+  puzzleRoom.style = 'height: 100%; display: flex; justify-content: center; align-items: center'
+  window.hidePuzzle = function() {
+    window.knownPuzzles[currentPanel] = document.getElementById('puzzle_' + currentPanel)
+    puzzleRoom.removeChild(window.knownPuzzles[currentPanel])
+  }
+  
   window.updatePuzzle = function() {
     if (window.knownPuzzles[currentPanel] != undefined) {
-      window.currentPuzzle = window.knownPuzzles[currentPanel]
-      draw(window.currentPuzzle)
+      puzzleRoom.appendChild(window.knownPuzzles[currentPanel])
       return
     }
-    var svg = document.getElementById('puzzle')
-    while (svg.firstChild) svg.removeChild(svg.firstChild)
+    var svg = document.createElement('svg')
+    svg.id = 'puzzle_' + currentPanel
+    svg.style = 'pointer-events: auto'
+    window.knownPuzzles[currentPanel] = svg
+    puzzleRoom.appendChild(window.knownPuzzles[currentPanel])
     var request = new XMLHttpRequest()
     request.onreadystatechange = function() {
       if (this.readyState == 4 && this.status == 200) {
         window.currentPuzzle = Puzzle.deserialize(this.responseText)
-        draw(window.currentPuzzle)
+        draw(window.currentPuzzle, svg.id)
       }
     }
     request.open("GET", "puzzles/" + window.currentPanel + '.json', true)
@@ -279,10 +289,10 @@ window.loadHeader = function(titleText) {
   arrowLeft.id = 'arrowLeft'
   arrowLeft.onclick = function() {
     if (window.currentPanel !== 1) {
-      window.knownPuzzles[currentPanel] = window.currentPuzzle
+      window.hidePuzzle()
       window.currentPanel--
       window.updateArrows()
-      updatePuzzle()
+      window.updatePuzzle()
     }
   }
   
@@ -292,10 +302,10 @@ window.loadHeader = function(titleText) {
   arrowRight.id = 'arrowRight'
   arrowRight.onclick = function() {
     if (window.currentPanel !== window.unlockedPanel) {
-      window.knownPuzzles[currentPanel] = window.currentPuzzle
+      window.hidePuzzle()
       window.currentPanel++
       window.updateArrows()
-      updatePuzzle()
+      window.updatePuzzle()
     }
   }
   
