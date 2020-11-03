@@ -30,6 +30,7 @@
         if (window.currentPanel === window.unlockedPanel) {
           window.unlockedPanel++
           window.updateArrows()
+					localStorage.setItem('unlockedPanel', window.unlockedPanel)
         }
       }
       window.updatePuzzle()

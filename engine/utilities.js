@@ -133,8 +133,8 @@ window.GAP_NONE      = 0
 window.GAP_BREAK     = 1
 window.GAP_FULL      = 2
 
-window.currentPanel = 1
-window.unlockedPanel = 1
+window.currentPanel = localStorage.getItem('currentPanel')
+window.unlockedPanel = localStorage.getItem('unlockedPanel')
 window.knownPuzzles = []
 
 var animations = ''
@@ -281,6 +281,7 @@ window.loadHeader = function(titleText) {
     if (window.currentPanel !== 1) {
       window.knownPuzzles[currentPanel] = window.currentPuzzle
       window.currentPanel--
+			localStorage.setItem('currentPanel', window.currentPanel)
       window.updateArrows()
       updatePuzzle()
     }
@@ -294,6 +295,7 @@ window.loadHeader = function(titleText) {
     if (window.currentPanel !== window.unlockedPanel) {
       window.knownPuzzles[currentPanel] = window.currentPuzzle
       window.currentPanel++
+			localStorage.setItem('currentPanel', window.currentPanel)
       window.updateArrows()
       updatePuzzle()
     }
