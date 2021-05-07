@@ -391,6 +391,65 @@ window.loadHeader = function(titleText) {
     localStorage.volume = this.value
   }
   volume.style.backgroundImage = 'linear-gradient(to right, ' + window.ALT_BACKGROUND + ', ' + window.ACTIVE_COLOR + ')'
+	
+  expandedSettings.appendChild(document.createElement('br'))
+  expandedSettings.appendChild(document.createElement('br'))
+	
+	var aboutModal = document.createElement('div')
+	navbar.appendChild(aboutModal)
+	aboutModal.style.display = 'none'
+	aboutModal.style.position = 'fixed'
+	aboutModal.style.zIndex = '1'
+	aboutModal.style.paddingTop = '50px'
+	aboutModal.style.left = '0'
+	aboutModal.style.top = '0'
+	aboutModal.style.width = '100%'
+	aboutModal.style.height = '100%'
+	aboutModal.style.backgroundColor = 'rgba(255, 255, 255, 0.1)'
+	
+	var aboutContent = document.createElement('div')
+	aboutModal.appendChild(aboutContent)
+	aboutContent.style.backgroundColor = 'black'
+	aboutContent.style.margin = 'auto'
+	aboutContent.style.padding = '20px'
+	aboutContent.style.width = '80%'
+	aboutContent.style.height = '80%'
+	aboutContent.style.boxShadow = '0 0 50px 50px black'
+	aboutContent.style.color = '#aaa'
+	aboutContent.style.textAlign = 'left'
+	aboutContent.style.fontSize = '1.2em'
+	aboutContent.style.overflow = 'auto'
+	
+	var aboutClose = document.createElement('a')
+	aboutContent.appendChild(aboutClose)
+  aboutClose.href = '#'
+	aboutClose.style.cssFloat = 'right'
+	aboutClose.style.fontSize = '30px'
+	aboutClose.style.fontWeight = 'bold'
+	aboutClose.innerText = '\u00D7'
+	aboutClose.style.color = 'white'
+	aboutClose.onclick = function(event) {
+		aboutModal.style.display = 'none'
+	}
+	
+	var aboutText = document.createElement('p')
+	aboutContent.appendChild(aboutText)
+	aboutText.innerText = 'Witness Playground by Seren\n\nContains portions of code from Witness Puzzles by darkid licensed under the BSD 3-Clause License:\n\n'
+	
+	var licenseText = document.createElement('pre')
+	aboutText.appendChild(licenseText)
+	window.fetch('engine/LICENSE.md').then(response => response.text()).then(function(text) {
+			licenseText.innerText = text
+	})
+	
+  var aboutButton = document.createElement('a')
+  expandedSettings.appendChild(aboutButton)
+  aboutButton.href = '#'
+	aboutButton.style.color = '#4c9'
+  aboutButton.innerText = 'About'
+	aboutButton.onclick = function() {
+		aboutModal.style.display = 'block'
+	}
 }
 
 // Automatically solve the puzzle
